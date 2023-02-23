@@ -1,0 +1,30 @@
+﻿@*@model Dictionary<int, string>*@
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Welcome</h1>
+<br />
+<br />
+<a href="/Register/SingUp"><input type="button" class="btn btn-primary btn-sm" style="width:15%;" value="Register" /></a>
+<input class="btn btn-success btn-sm" type="url" href="" value="Login" style="width:15%; margin-left:50px;" />
+
+@*<select id="select2class" name="selectedItems" multiple class="form-control">
+    @foreach (KeyValuePair<string, string> item in ViewBag.Items)
+    {
+        <option value="@item.Key">@item.Value</option>
+    }
+</select>
+
+<script>
+    $(document).ready(function () {
+        $("#select2class").select2({
+            allowClear: true,
+            placeholder: 'Search for a users'
+        });
+    });
+</script>*@
+
