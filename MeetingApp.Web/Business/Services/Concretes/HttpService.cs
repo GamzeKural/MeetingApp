@@ -73,13 +73,7 @@ namespace MeetingApp.Web.Business.Services.Concretes
                 HttpResponseMessage response = new HttpResponseMessage();
                 if (value != null)
                 {
-                    var options = new JsonSerializerOptions
-                    {
-                        ReferenceHandler = ReferenceHandler.Preserve,
-                        MaxDepth = 64 
-                    };
-
-                    Content = new StringContent(System.Text.Json.JsonSerializer.Serialize(value, options), Encoding.UTF8, "application/json");
+                    Content = new StringContent(System.Text.Json.JsonSerializer.Serialize(value), Encoding.UTF8, "application/json");
                     response = client.PostAsync(ApiBaseUrl + uri, Content).Result;
                 }
 
@@ -112,13 +106,7 @@ namespace MeetingApp.Web.Business.Services.Concretes
                 HttpResponseMessage response = new HttpResponseMessage();
                 if (value != null)
                 {
-                    var options = new JsonSerializerOptions
-                    {
-                        ReferenceHandler = ReferenceHandler.Preserve,
-                        MaxDepth = 64 
-                    };
-
-                    Content = new StringContent(System.Text.Json.JsonSerializer.Serialize(value, options), Encoding.UTF8, "application/json");
+                    Content = new StringContent(System.Text.Json.JsonSerializer.Serialize(value), Encoding.UTF8, "application/json");
                     response = client.PutAsync(ApiBaseUrl + uri, Content).Result;
                 }
 

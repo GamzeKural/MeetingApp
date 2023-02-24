@@ -30,8 +30,8 @@ namespace MeetingApp.Entities.Models
         public string Phone { get; set; }
         [Required]
         public string Password { get; set; }
-        [Required]
-        public string ProfilePhoto { get; set; }
+        [AllowNull]
+        public byte[] ProfilePhoto { get; set; }
 
         [AllowNull]
         public virtual ICollection<Meeting>? Meetings { get; set; }

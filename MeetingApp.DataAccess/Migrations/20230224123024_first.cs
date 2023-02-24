@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MeetingApp.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class createDatabase : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,7 +22,7 @@ namespace MeetingApp.DataAccess.Migrations
                     Mail = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfilePhoto = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ProfilePhoto = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,7 +60,7 @@ namespace MeetingApp.DataAccess.Migrations
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Document = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Document = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     UserTheCreatedId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -120,6 +120,11 @@ namespace MeetingApp.DataAccess.Migrations
                         principalTable: "Users",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "FirstName", "LastName", "Mail", "Password", "Phone", "ProfilePhoto" },
+                values: new object[] { 1, "Gamze Nur", "Kural", "kuralgamzenur@gmail.com", "123", "05554443322", null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmailRecipients_EmailId",

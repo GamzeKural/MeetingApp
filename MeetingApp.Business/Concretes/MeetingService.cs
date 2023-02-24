@@ -4,6 +4,7 @@ using MeetingApp.DataAccess.Abstracts;
 using MeetingApp.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace MeetingApp.Business.Concretes
         {
             _repo = repo;
             _emailService = emailService;
-            this.meetingParticipantService = meetingParticipantService; 
+            this.meetingParticipantService = meetingParticipantService;
         }
 
         public OperationResponse<Meeting> AddMeeting(Meeting meeting)
@@ -65,7 +66,7 @@ namespace MeetingApp.Business.Concretes
                 return OperationResponse<Meeting>.CreateFailure(ex.Message);
             }
         }
-
+        
         public OperationResponse<List<Meeting>> GetAllMeetings()
         {
             try

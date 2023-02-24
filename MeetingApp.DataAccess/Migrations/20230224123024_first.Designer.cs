@@ -4,6 +4,7 @@ using MeetingApp.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeetingApp.DataAccess.Migrations
 {
     [DbContext(typeof(MeetingAppDbContext))]
-    partial class MeetingAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230224123024_first")]
+    partial class first
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,7 +184,7 @@ namespace MeetingApp.DataAccess.Migrations
                             FirstName = "Gamze Nur",
                             LastName = "Kural",
                             Mail = "kuralgamzenur@gmail.com",
-                            Password = "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASweHyKGDbkqvtu9AhjVY6wAAAAACAAAAAAAQZgAAAAEAACAAAACF7rogA6ujnBsb8tKibaNV+IvqQlk+d6qsSJpzJsUKmQAAAAAOgAAAAAIAACAAAABsviFWZ9273T2x5dED3A5zJ1ACbPqoVQCR8xaY6f9IkxAAAAB5tHhSe+zQv9bt953hZs3SQAAAANA2ek7bKl1Q6moMQZASCbZOIqUTiRlXDNL9c3by7YWP1z5IqlR9C0B88NDf60r+QT/WVHF5RxF0iaTwaxNsJpI=",
+                            Password = "123",
                             Phone = "05554443322"
                         });
                 });

@@ -1,4 +1,5 @@
 ﻿using MeetingApp.Entities.Models;
+using MeetingApp.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -45,7 +46,7 @@ namespace MeetingApp.DataAccess.Context
                 entity.Property(x => x.Mail).HasMaxLength(200);
                 entity.Property(x => x.Phone).HasMaxLength(11);
                 entity.Property(x => x.Password);
-                entity.Property(x => x.ProfilePhoto);
+                entity.Property(x => x.ProfilePhoto).IsRequired(false);
             });
 
 
@@ -57,7 +58,7 @@ namespace MeetingApp.DataAccess.Context
                 entity.Property(x => x.StartDate);
                 entity.Property(x => x.EndDate);
                 entity.Property(x => x.Description).HasMaxLength(500);
-                entity.Property(x => x.Document);
+                entity.Property(x => x.Document).IsRequired(false);
                 entity.Property(x => x.UserTheCreatedId);
 
                 entity.HasOne(d => d.UserTheCreated)
@@ -115,6 +116,17 @@ namespace MeetingApp.DataAccess.Context
                     .WithMany(p => p.EmailRecipients)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
+            });
+
+            modelBuilder.Entity<User>().HasData(
+            new User
+            {
+                Id = 1,
+                FirstName = "Gamze Nur",
+                LastName = "Kural",
+                Mail = "kuralgamzenur@gmail.com",
+                Phone = "05554443322",
+                Password = Encription.Encrypt("123")
             });
         }
     }

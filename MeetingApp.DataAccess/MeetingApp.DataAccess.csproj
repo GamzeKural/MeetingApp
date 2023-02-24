@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MeetingApp.Entities\MeetingApp.Entities.csproj" />
+    <ProjectReference Include="..\Utils\MeetingApp.Utils.csproj" />
   </ItemGroup>
 
 </Project>

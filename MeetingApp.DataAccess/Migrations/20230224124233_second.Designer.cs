@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeetingApp.DataAccess.Migrations
 {
     [DbContext(typeof(MeetingAppDbContext))]
-    [Migration("20230223123310_createDatabase")]
-    partial class createDatabase
+    [Migration("20230224124233_second")]
+    partial class second
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,9 +91,8 @@ namespace MeetingApp.DataAccess.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("Document")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Document")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -171,13 +170,23 @@ namespace MeetingApp.DataAccess.Migrations
                         .HasMaxLength(11)
                         .HasColumnType("nvarchar(11)");
 
-                    b.Property<string>("ProfilePhoto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("ProfilePhoto")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Gamze Nur",
+                            LastName = "Kural",
+                            Mail = "kuralgamzenur@gmail.com",
+                            Password = "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASweHyKGDbkqvtu9AhjVY6wAAAAACAAAAAAAQZgAAAAEAACAAAACF7rogA6ujnBsb8tKibaNV+IvqQlk+d6qsSJpzJsUKmQAAAAAOgAAAAAIAACAAAABsviFWZ9273T2x5dED3A5zJ1ACbPqoVQCR8xaY6f9IkxAAAAB5tHhSe+zQv9bt953hZs3SQAAAANA2ek7bKl1Q6moMQZASCbZOIqUTiRlXDNL9c3by7YWP1z5IqlR9C0B88NDf60r+QT/WVHF5RxF0iaTwaxNsJpI=",
+                            Phone = "05554443322"
+                        });
                 });
 
             modelBuilder.Entity("MeetingApp.Entities.Models.Email", b =>
