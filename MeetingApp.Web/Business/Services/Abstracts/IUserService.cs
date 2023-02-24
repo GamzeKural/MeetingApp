@@ -10,5 +10,6 @@ namespace MeetingApp.Web.Business.Services.Abstracts
         Task<OperationResponse<User>> AddUser(User user);
         Task<OperationResponse<User>> UpdateUser(User user);
         Task<OperationResponse<int>> RemoveUser(int id);
+        Task<Token> Authenticate(AuthModel model);
     }
 }

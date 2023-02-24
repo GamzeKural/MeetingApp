@@ -27,11 +27,25 @@ namespace MeetingApp.Web.Business.Services.Concretes
             }
         }
 
+        public async Task<Token> Authenticate(AuthModel model)
+        {
+            try
+            {
+                var result = await httpService.Post<Token>("User/Authenticate", model, false);
+
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public async Task<OperationResponse<List<User>>> GetAllUsers()
         {
             try
             {
-                var result = await httpService.Get<OperationResponse<List<User>>>("User/GetAllUsers");
+                var result = await httpService.Get<OperationResponse<List<User>>>("User/GetAllUsers",false);
                 return result;
             }
             catch (Exception)

@@ -12,6 +12,7 @@ builder.Services.AddTransient<IMeetingParticipantService, MeetingParticipantServ
 builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddTransient<IEmailRecipientService, EmailRecipientService>();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -25,6 +26,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 

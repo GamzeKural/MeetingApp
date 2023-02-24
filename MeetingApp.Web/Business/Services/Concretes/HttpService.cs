@@ -114,8 +114,8 @@ namespace MeetingApp.Web.Business.Services.Concretes
                 {
                     var options = new JsonSerializerOptions
                     {
-                        ReferenceHandler = ReferenceHandler.Preserve
-                        //MaxDepth = 64 
+                        ReferenceHandler = ReferenceHandler.Preserve,
+                        MaxDepth = 64 
                     };
 
                     Content = new StringContent(System.Text.Json.JsonSerializer.Serialize(value, options), Encoding.UTF8, "application/json");

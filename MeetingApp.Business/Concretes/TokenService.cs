@@ -39,13 +39,24 @@ namespace MeetingApp.Business.Concretes
             // Else we generate JSON Web Token
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.UTF8.GetBytes(config["JWT:Key"]);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            try
             {
-                Expires = DateTime.UtcNow.AddDays(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature),
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return new Token { VerifiedToken = tokenHandler.WriteToken(token) };
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Expires = DateTime.UtcNow.AddDays(1),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature),
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+
+                return new Token { VerifiedToken = tokenHandler.WriteToken(token) };
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+            
+            
 
         }
     }
